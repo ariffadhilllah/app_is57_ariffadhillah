@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('no_kamar'); 
             $table->bigInteger('jeniskamars_id');
+            $table->string('foto')->default('default.jpg');
             $table->timestamps();
         });
     }
