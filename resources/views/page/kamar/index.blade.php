@@ -25,8 +25,10 @@
 
     <div class="container  bg-white mt-3 p-4">
     {{-- <h1>Data Kamar</h1> --}}
+   @can('create', App\kamar::class)
    
-    <a href="/kamar/form" class="btn btn-primary">Tambah Kamar</a>
+   <a href="/kamar/form" class="btn btn-primary">Tambah Kamar</a>
+   @endcan
    
     <div class="card">
         <div class="card-header">
@@ -55,6 +57,8 @@
                             <td>{{$item->jeniskamars->max_dewasa}}</td>
                             <td>{{$item->jeniskamars->max_anak}}</td>
                             <td>
+@can('create', App\kamar::class)
+    
 
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#foto{{$item->id}}">
                                     foto
@@ -76,10 +80,10 @@
 
                                 <a href="/kamar/edit/{{$item->id}}" class="btn btn-success btn-sm">edit</a>
                                  <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">HAPUS</button>
-  
+<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{$item->id}}">HAPUS</button>
+@endcan
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

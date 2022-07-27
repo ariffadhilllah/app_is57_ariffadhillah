@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\jeniskamar;
 use App\Models\kamar;
+use App\Models\jeniskamar;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class kamarcontroller extends Controller
 {
@@ -40,6 +41,7 @@ class kamarcontroller extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create',kamar::class);
         $ext = $request->foto->extension();
         $namaFile = $request->no_kamar.".".$ext;
         $simpan = $request->foto->move('fotokamar',$namaFile);
